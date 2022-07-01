@@ -59,6 +59,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="w3l_search"></div>
 
+		<!-- <div class="w3l_search">
+			<form action="#" method="post">
+				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+				<input type="submit" value=" ">
+			</form>
+		</div> -->
+
 		<?php 
 		if(isset($_SESSION['user'])){
 		?>
@@ -103,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
 					<li><a href="index.php">Events</a><i>/</i></li>
-					<li><a href="index.php">Best Deals</a><i>/</i></li>
+					<li><a href="Services.php">Services</a><i>/</i></li>
 					<li><a href="about.php">About Us</a><i>/</i></li>
 					<li><a href="ContactUs.php">Contact Us</a></li>
 				</ul>

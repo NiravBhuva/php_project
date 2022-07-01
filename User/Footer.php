@@ -7,9 +7,9 @@
 			<div class="col-md-3 w3_footer_grid">
 				<h3>information</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="ContactUs.php">Contact Us</a></li>
 					<li><a href="OrderHistory.php">Order History</a></li>
-					<li><a href="index.php">Services</a></li>
+					<li><a href="Services.php">Services</a></li>
+					<li><a href="ContactUs.php">Contact Us</a></li>
 					<li><a href="About.php">About Us</a></li>
 				</ul>
 			</div>
@@ -55,7 +55,11 @@
 				<h3>E-Card Features</h3>
 				<ul class="w3_footer_grid_list">
 					
-						<li><a href="about.php">FAST & FREE DELIVERY</a></li>
+						<li><a href="Services.php">Ready-To-Go Designs</a></li>
+						<li><a href="Services.php">24x7 Live Support</a></li>
+						<li><a href="Services.php">Save Time And Money</a></li>
+						<li><a href="Services.php">Easy & Superfast Service</a></li>
+						<li><a href="Services.php">Ready-To-Go Designs</a></li>
 						<li><a href="about.php">SAFE & SECURE PAYMENTS</a></li>
 						<li><a href="about.php">100% MONEY BACK GUARANTEE</a></li>
 						<li><a href="about.php">BEST VISITING CARD PRINTING</a></li>

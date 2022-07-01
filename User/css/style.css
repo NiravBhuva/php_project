@@ -736,6 +736,16 @@ ul.dropdown-menu.drp-mnu li a i {
 img.pp-img {
     width: 65%;
 }
+img.pp-img1 {
+    width: 100%;
+	height: 280px;
+	padding-left: 30px;
+}
+img.pp-img2 {
+    width: 100%;
+	height: 240px;
+	padding-right: 30px;
+}
 .tab-grid p {
     color: #8B8B8B;
     font-size: 0.95em;
@@ -2044,7 +2054,7 @@ a.pa_italic:focus {
 	padding-bottom:2em;
 }
 .services-bottom{
-	background:url(../images/2.jpg) no-repeat 0px 0px;
+	background:url(../upload/weather.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -3377,7 +3387,7 @@ input.checkbox:checked:after {
 		padding-right: 1em;
 		padding-left: 0;
 		float: left;
-		width: 33.33%;
+		width: 100%;
 	}
 	.w3ls_service_grids1_right {
 		padding-right: 1em;

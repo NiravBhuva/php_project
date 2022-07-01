@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
 					<input type="text" name="subject" placeholder="Subject" required>
 				</div>
 				<div class="clearfix"> </div>
-				<textarea required name="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}">Message...</textarea>
+				<textarea name="message" placeholder="Message..." required></textarea>
 				<input type="submit" name="submit" value="Submit">
 				<input type="reset" value="Clear">
 			</form>
