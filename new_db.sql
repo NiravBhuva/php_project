@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2022 at 11:02 AM
+-- Generation Time: Aug 06, 2022 at 01:24 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.19
 
@@ -97,7 +97,8 @@ CREATE TABLE `contact_us` (
 --
 
 INSERT INTO `contact_us` (`Contact_id`, `Username`, `Contact`, `Email`, `Subject`, `Contact_Date`, `Message`) VALUES
-(3, 'Nirav', 7990322058, 'nirav@gmail.com', 'Order', '26-06-2022', 'I want to order visiting card');
+(3, 'Nirav', 7990322058, 'nirav@gmail.com', 'Order', '26-06-2022', 'I want to order visiting card'),
+(7, 'h', 9999999999, 'h@a.a', 'h', '29-07-2022', 'h');
 
 -- --------------------------------------------------------
 
@@ -145,7 +146,8 @@ CREATE TABLE `user_info` (
 --
 
 INSERT INTO `user_info` (`User_id`, `Name`, `Username`, `Password`, `Contact`, `Email`, `Gender`, `DOB`, `Address`, `City`) VALUES
-(1, 'Nirav', 'nirav', '123qwe', 1234567890, 'nirav@gmail.com', 'male', '05-04-1999', 'Jasdan, Gujarat', 'Rajkot');
+(1, 'Nirav', 'nirav', '123qwe', 1234567890, 'nirav@gmail.com', 'male', '05-04-1999', 'Jasdan, Gujarat', 'Rajkot'),
+(7, 'jaydeep', 'Jaydeep', '123', 8769876754, 'jaydeep@gmail.com', 'male', 'DD-MMM-YYYY', 'jasdan', 'jasdan');
 
 --
 -- Indexes for dumped tables
@@ -189,13 +191,13 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `Contact_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Contact_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `User_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `User_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
