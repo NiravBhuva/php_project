@@ -46,7 +46,7 @@
 			<h3>Register</h3>
 			<div class="w3_login_module">
 				<div class="module form-module">
-				  <div class="toggle"><a href="index.php"  color="white"><i class="fa fa-times fa-close"></i></a></div>
+				  <div class="toggle"><a href="login.php"  color="white"><i class="fa fa-times fa-close"></i></a></div>
 				
 				  
 				  <div class="form">

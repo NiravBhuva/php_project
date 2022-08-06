@@ -4,10 +4,11 @@ if(!isset($_SESSION['user']))
 	{
 	
 		?>
-		<script>
+		<!-- <script>
 			alert('You have to login first');
 			window.location="login.php";
-		</script><?php
+		</script> -->
+		<?php
 	}
 	include "Header.php";
     
@@ -41,7 +42,7 @@ while($r=mysqli_fetch_array($c))
 											<h4>Rs. <?php echo $r['Price'];?></h4>
 										</div>
 										<div class="snipcart-details">
-											<a href=""><input type="submit" name="submit" value="Buy Now" class="button" /></a>
+											<a href="single.php?id=<?php echo $r['Card_id'];?>"><input type="submit" name="submit" value="Buy Now" class="button" /></a>
 												
 										</div>
 									</div>

@@ -15,16 +15,15 @@ if(isset($_POST['submit']))
 	if($r>=1)
 	{
 		$_SESSION['user']=$email;
-		while($row=mysqli_fetch_array($c));
-		{
-			$_SESSION['User_id']=$row['User_id'];
-			$_SESSION['Name']=$row['Name'];
-		}
+		$row=mysqli_fetch_array($c);
+		$_SESSION['User_id']=$row['User_id'];
+		$_SESSION['Name']=$row['Name'];
 		?>
 		<script>
 			alert('Login Succesfully');
 			window.location="index.php";
-		</script><?php
+		</script>
+		<?php
 	}
 	else
 	{
@@ -46,7 +45,7 @@ if(isset($_POST['submit']))
 				  <div class="form">
 					<h2>Login to your account</h2>
 					<form action="#" method="post">
-					  <input type="email" name="email" placeholder="Email" required>
+					  <input type="email" name="email" placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
 					  <input type="password" name="password" placeholder="Password" required>
 					  <input type="submit" name="submit" value="Login">
 					  <tr><br><br>

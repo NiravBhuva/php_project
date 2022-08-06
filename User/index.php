@@ -3,10 +3,11 @@ session_start();
 if(!isset($_SESSION['user']))
 	{
 		?>
-		<script>
+		<!-- <script>
 			alert('You have to login first');
 			window.location="login.php";
-		</script><?php
+		</script> -->
+		<?php
 	
 	}
 	include "Header.php";

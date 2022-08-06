@@ -69,15 +69,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<?php 
 		if(isset($_SESSION['user'])){
 		?>
-			<div class="product_list_header">  
+			<!-- <div class="product_list_header">  
 			<a href="checkout.php">
             <input type="submit" name="submit" value="View your cart" class="button" /></a>
-        	</div>
+        	</div> -->
+
+			<div class="product_list_header">  
+			<form action="checkout.php" class="last">
+                <fieldset>
+                    <!-- <input type="hidden" name="cmd" value="_cart" />
+                    <input type="hidden" name="display" value="1" /> -->
+                    <input type="submit" name="submit" value="View your cart" class="button" />
+                </fieldset>
+            </form>
+			</div>
 
 			<div class="w3l_header_right1">
 			<h2><a href="logout.php">Logout</a></h2>
 			</div>
 		<?php
+		}else{
+			?>
+			<div class="w3l_header_right1">
+			<h2><a href="login.php">Login</a></h2>
+			</div>
+			<?php
 		}
 		?>
 		<div class="clearfix"> </div>
@@ -109,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="index.php">Events</a><i>/</i></li>
+					<!-- <li><a href="index.php">Events</a><i>/</i></li> -->
 					<li><a href="Services.php">Services</a><i>/</i></li>
 					<li><a href="about.php">About Us</a><i>/</i></li>
 					<li><a href="ContactUs.php">Contact Us</a></li>
@@ -119,7 +135,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="phone_email">
 					<li><i class="fa fa-phone" aria-hidden="true"></i> +91-7878438604</li>
 					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="ecard@gmail.com">ecard@gmail.com</a></li>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-history"></i><a href="OrderHistory.php">Order History</a>
+					<?php 
+					if(isset($_SESSION['user'])){
+						?>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-history"></i><a href="OrderHistory.php">Order History</a>
+						<?php
+					}
+					?>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>

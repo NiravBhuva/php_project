@@ -265,7 +265,7 @@ ul.dropdown-menu.drp-mnu li a i {
 .navbar-nav {
     float: none;
     margin: 0;
-	border-top: 1px solid #B58F62;
+	/* border-top: 1px solid #B58F62; */
 }
 .navbar-nav > li > a {
     color: #212121;
@@ -581,7 +581,7 @@ ul.dropdown-menu.drp-mnu li a i {
     padding: .5em 2.5em .5em 1em;
     border: 1px solid #84c639;
     margin: .35em 0 0;
-    background: url(../images/cart.png) no-repeat 116px 9px;
+    background: url(../upload/cart.png) no-repeat 116px 9px;
 }
 #PPMiniCart form {
     width: 590px !important;
@@ -1393,6 +1393,7 @@ button.submit.check_out{
 }
 .checkout-right {
     margin-top: 3em;
+	margin-right: 100px;
 }
 .w3l_banner_nav_right_banner3_btml ol {
     padding-left: 1em;
@@ -2507,8 +2508,8 @@ table.timetable_sub {
 }
 .timetable_sub th, .timetable_sub td {
     text-align: center;
-    padding: 7px;
-    font-size: 14px;
+    padding: 10px;
+    font-size: 12px;
     color: #212121;
 }
 .timetable_sub td {
@@ -2517,6 +2518,11 @@ table.timetable_sub {
 td.invert-image a img {
     width:30%;
     margin: 0 auto;
+}
+.invert-image {
+    width: 150px;
+	height: 80px;
+    margin: 5px;
 }
 .rem{
 	position:relative;
@@ -2609,6 +2615,9 @@ td.invert-image a img {
 .checkout-left {
     margin: 2em 0 0;
 }
+/* .checkout-table{
+	margin-right: 0px;
+} */
 .checkout-left-basket ul li{
 	list-style-type:none;
 	margin-bottom:1em;

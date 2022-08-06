@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
 			<form action="#" method="post">
 				<div class="col-md-6 wthree_contact_left_grid">
 					<input type="text" name="name" placeholder="Name" required>
-					<input type="email" name="email" placeholder="Email" required>
+					<input type="email" name="email" placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
 				</div>
 				<div class="col-md-6 wthree_contact_left_grid">
 					<input type="text" name="contact" placeholder="Contact Number" pattern="[7-9]{1}[0-9]{9}" title="Phone number" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" required>

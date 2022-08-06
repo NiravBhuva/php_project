@@ -14,5 +14,5 @@
 	unset($_SESSION['User_id']);
 ?>
 <script>			
-	window.location="login.php";
+	window.location="index.php";
 </script>

@@ -4,10 +4,11 @@ if(!isset($_SESSION['user']))
 	{
 	
 		?>
-		<script>
+		<!-- <script>
 			alert('You have to login first');
 			window.location="login.php";
-		</script><?php
+		</script> -->
+		<?php
 	}
 	include "Header.php";
 ?>
@@ -50,10 +51,10 @@ while($r=mysqli_fetch_array($c))
 						</div>
 						</div>
 					</div>
-				<?php
+	<?php
 }
 ?>
-					<div class="clearfix"> </div>
+				<div class="clearfix"> </div>
 				</div>
 		</div>
 	</div>
