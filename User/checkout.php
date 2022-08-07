@@ -4,40 +4,58 @@
 	include "Header.php";
 	include "Connection.php";
 	if (isset($_POST['btnPlaceOrder'])){
+		$c = $_SESSION['cart'];
+		$c_new = array();
+		echo count($c);
+		$Quant = 0;
+		$NetAm = 0;
+		for ($i = 0; $i < count($c); $i++) {
+			$r = $c[$i];
+				if($r['user_id'] == $_SESSION['User_id']){
+					$Quant = $Quant + $r['quantity'];
+					$NetAm = $NetAm + ($r['price']*$r['quantity']);
+				}
+		}
+
 		$Name=$_POST['name'];
-		$Quantity=$_POST['Quantity'];
+		$Quantity=$Quant;
 		$address=$_POST['addtxt'];
-		$NetAmount=$_POST['oamount'];
-		$username='Yash';	
+		$NetAmount=$NetAm;
+		$username=$_SESSION['Name'];	
 		$dt=date("d-m-Y");
 		
-		$qq="Insert into order_master values('','$username','$Name','$Quantity','$NetAmount','$dt','$address')";
-		$c=mysqli_query($con,$qq);
-		if($c)
-		{
+		$qq = "INSERT INTO `order_master` (`Order_id`, `Username`, `Name`, `Quantity`, `Oamount`, `Order_date`, `Daddress`) VALUES (NULL, '$username','$Name','$Quantity','$NetAmount','$dt','$address');";
+		
+		$qry=mysqli_query($con,$qq);
+		if($qry){
 			$order_master_id = $con->insert_id;
 			
-			$q="SELECT * FROM cart_info";
-			$cc=mysqli_query($con,$q);
-			while($r=mysqli_fetch_array($cc))
-			{		 
-						
-						$card_id=$r['Card_id'];
-						$logo=$r['Logo'];
-						$name=$r['Name']; 
-						$contact=$r['Contact'];
-						$email=$r['Email'];
-						$company=$r['Company'];
-						$address=$r['Address'];
-						$Quantity=$r['Quantity'];
-						$price=$r['Price'];
-						$total=$Quantity * $price;
-						$q1="INSERT into order_item_detail values ('','$card_id','$order_master_id','$name','$company','$logo','$email','$contact','$Quantity','$price','$total','$address')";
-						mysqli_query($con,$q1);
-								
+			for ($i = 0; $i < count($c); $i++) {
+				$r = $c[$i];
+				if($r['user_id'] == $_SESSION['User_id']){
+					$card_id=$r['id'];
+					$logo=$r['image'];
+					$name=$r['name']; 
+					$contact=$r['contact'];
+					$sec_num=$r['contact_optional'];
+					$email=$r['email'];
+					$company=$r['company'];
+					$address=$r['address'];
+					$Quantity=$r['quantity'];
+					$price=$r['price'];
+					$total=$Quantity * $price;
+					$q1 = "";
+					if($r['contact_optional'] != null){
+						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Quantity`, `Price`, `Total`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact','$sec_num','$Quantity','$price','$total','$address');";
+					}else{
+						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Quantity`, `Price`, `Total`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact',NULL,'$Quantity','$price','$total','$address');";
+					}
+					mysqli_query($con,$q1);
+				}else{
+					$c_new[] = $r;
+				}
 			}
-			$q2="delete from cart_info where Name='$un'";
-			mysqli_query($con,$q2);
+			$_SESSION['cart'] = $c_new;
 		?>
 		<script>1		
 			alert('Your order had been placed successfully');
@@ -45,24 +63,22 @@
 		</script>
 		<?php
 			
-		}
-		else
-		{
-			?>
-		<script>
-			alert('Something Goes Wrong');
-			
-		</script>
+		}else{
+		?>
+			<script>
+				alert('Something Went Wrong');
+			</script>
 		<?php
-			
 		}
-		
-		
 	}
 ?>		
 <!-- about -->
 <?php 
-$c = $_SESSION['cart'];
+$c = array();
+if(isset($_SESSION['cart'])){
+	$c = $_SESSION['cart'];
+}
+
 $flag = array();
 $sum=0;
 $counter=0;
@@ -130,7 +146,7 @@ for ($i = 0; $i < count($c); $i++) {
 							<td class="invert-image"><img src="../web/upload/<?php echo $rrr['Image'];?>" class="invert-image"/></td>
 							<td class="invert-image"><img src="../User/upload/<?php echo $r['image'];?>" class="invert-image"/></td>
 							<td class="invert"><?php echo $r['name'];?></td>	 
-							<td class="invert"><?php echo $r['contact'];?></td>
+							<td class="invert"><?php echo $r['contact']; if($r['contact_optional'] != null){echo ",\n"; echo $r['contact_optional'];} ?></td>
 							<td class="invert"><?php echo $r['email'];?></td>
 							<td class="invert"><?php echo $r['company'];?></td>
 							<td class="invert"><?php echo $r['address'];?></td>
@@ -179,12 +195,12 @@ if(in_array(true ,$flag )){
 											<div class="first-row form-group">
 												<div class="controls">
 													<label class="control-label">Full name: </label>
-													<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
+													<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name" required>
 												</div>
 												
 												<div class="controls">
 													<label class="control-label">Address: </label>
-												 <input class="form-control" name="addtxt" type="text" placeholder="Address">
+												 <input class="form-control" name="addtxt" type="text" placeholder="Address" required>
 												</div>
 													
 											</div>
