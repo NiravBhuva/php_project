@@ -18,36 +18,22 @@ $query="SELECT * FROM card_info where Card_id='$id'";
 $c=mysqli_query($con,$query);
 while($r=mysqli_fetch_array($c)){
 	if(isset($_POST['submit'])){
-
-		// print_r($_FILES['image']['name']);
-		//print_r(dirname($_FILES["image"]["tmp_name"]));
 		
-		$id=$_REQUEST['id'];
-		$Name=$_POST['name'];
-		$Company=$_POST['company'];
-		$filename=$_FILES['image'];
-		$Email=$_POST['email'];
-		$Contact=$_POST['contact'];
-		$Address=$_POST['address'];
-		$quantity=$_POST['quantity'];
-		$Price=$_POST['price'];
-		$Total=$_POST['amount'];
-		$NetAmount=$_POST['netamount'];
+		// $id=$_REQUEST['id'];
+		// $Name=$_POST['name'];
+		// $Company=$_POST['company'];
+		// $filename=$_FILES['image'];
+		// $Email=$_POST['email'];
+		// $Contact=$_POST['contact'];
+		// $Address=$_POST['address'];
+		// $quantity=$_POST['quantity'];
+		// $Price=$_POST['price'];
+		// $Total=$_POST['amount'];
+		// $NetAmount=$_POST['netamount'];
 
 		$filename = $_FILES["image"]["name"];
     	$tempname = $_FILES["image"]["tmp_name"];  
         $folder = "upload/".$filename;   
-
-		// if (move_uploaded_file($tempname, $folder)) {
-
-		// 	echo $_FILES['image']['name'];
-        //     echo "Image uploaded successfully";
-
-        // }else{
-
-        //     echo "Failed to upload image";
-
-    	// }
 
 		// echo count($_SESSION['cart']);
 		// unset($_SESSION['cart']);
@@ -61,6 +47,7 @@ while($r=mysqli_fetch_array($c)){
 			"image" => $filename,
 			"email" => $_POST['email'],
 			"contact" => $_POST['contact'],
+			"contact_optional" => $_POST['contact_optional'],
 			"address" => $_POST['address'],
 			"quantity" => $_POST['quantity'],
 			"price" => $_POST['price'],
@@ -132,26 +119,28 @@ while($r=mysqli_fetch_array($c)){
 
 						
 							<div class="form-group"> <label for="exampleInputEmail1">Name</label>
-							<input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Name" > </div>
+							<input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Name" required> </div>
 
 							<div class="form-group"> <label for="exampleInputEmail1">Company</label>
-							<input type="text" name="company" class="form-control" id="exampleInputEmail1" placeholder="Company name" > </div>
+							<input type="text" name="company" class="form-control" id="exampleInputEmail1" placeholder="Company name" required> </div>
 
 							<div class="form-group"> <label for="exampleInputFile">Logo</label>
 							<input type="file" name="image" id="exampleInputFile" required>  </div>
 
-
 							<div class="form-group"> <label for="exampleInputEmail1">Email</label>
-							<input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" > </div>
+							<input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required> </div>
 							
 							<div class="form-group"> <label for="exampleInputEmail1">Contact no.</label>
-							<input type="text" name="contact" class="form-control" id="exampleInputEmail1" placeholder="Contact" pattern="[7-9]{1}[0-9]{9}" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" > </div>
+							<div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+							<input type="text" name="contact" class="form-control" id="exampleInputEmail1" placeholder="Contact" pattern="[7-9]{1}[0-9]{9}" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" required> </div>
+							<input type="text" name="contact_optional" class="form-control" id="exampleInputEmail1" placeholder="Secondary Number(Optional)" pattern="[7-9]{1}[0-9]{9}" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')"> </div>
+							</div>
 				
 							<div class="form-group"> <label for="exampleInputEmail1">Address</label>
-							<input type="text" name="address" class="form-control" id="exampleInputEmail1" placeholder="Address" > </div>
+							<input type="text" name="address" class="form-control" id="exampleInputEmail1" placeholder="Address" required> </div>
 							
 							<div class="form-group"> <label for="exampleInputEmail1">Quantity</label>
-							<input type="number" name="quantity" class="form-control" id="exampleInputEmail1" placeholder="Quantity" > </div>
+							<input type="number" name="quantity" class="form-control" id="exampleInputEmail1" placeholder="Quantity" required> </div>
 							
 							<?php
 							$id=$_REQUEST['id'];
@@ -160,37 +149,13 @@ while($r=mysqli_fetch_array($c)){
 							while($r=mysqli_fetch_array($c)){
 								?>
 							 		<input type="hidden" name="price" value="<?php echo $r['Price'];?>">
-								<?php
-							}
-
-							$id=$_REQUEST['id'];
-							$query="SELECT * FROM card_info where Card_id='$id'";
-							$c=mysqli_query($con,$query);
-							while($r=mysqli_fetch_array($c)){
-								?>
-							 		<input type="hidden" name="amount" value="<?php echo $r['Price'];?>">
-								<?php
-							}
-							
-							$id=$_REQUEST['id'];
-							$query="SELECT * FROM card_info where Card_id='$id'";
-							$c=mysqli_query($con,$query);
-							while($r=mysqli_fetch_array($c)){
-								?>
-							 		<input type="hidden" name="discount" value="<?php echo $r['Price'];?>">
-								<?php
-							}
-							
-							$id=$_REQUEST['id'];
-							$query="SELECT * FROM card_info where Card_id='$id'";
-							$c=mysqli_query($con,$query);
-							while($r=mysqli_fetch_array($c)){
-								?>
-							 		<input type="hidden" name="netamount" value="<?php echo $r['Price'];?>">
+									<input type="hidden" name="amount" value="<?php echo $r['Price'];?>">
+									<input type="hidden" name="netamount" value="<?php echo $r['Price'];?>">
 								<?php
 							}
 							?>
 							<input type="submit" name="submit" value="Add to cart"  />
+							<br><br><br><br>
 							</form>
 						</div>
 					</div>
