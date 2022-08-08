@@ -23,8 +23,9 @@
 		$NetAmount=$NetAm;
 		$username=$_SESSION['Name'];	
 		$dt=date("d-m-Y");
+		$userId = $_SESSION['User_id'];
 		
-		$qq = "INSERT INTO `order_master` (`Order_id`, `Username`, `Name`, `Quantity`, `Oamount`, `Order_date`, `Daddress`) VALUES (NULL, '$username','$Name','$Quantity','$NetAmount','$dt','$address');";
+		$qq = "INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Quantity`, `Oamount`, `Order_date`, `Daddress`) VALUES (NULL,'$username','$userId','$Name','$Quantity','$NetAmount','$dt','$address');";
 		
 		$qry=mysqli_query($con,$qq);
 		if($qry){
