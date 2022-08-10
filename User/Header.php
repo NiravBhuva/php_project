@@ -134,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
 					<li><i class="fa fa-phone" aria-hidden="true"></i> +91-7878438604</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="ecard@gmail.com">ecard@gmail.com</a></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="">ecard@gmail.com</a></li>
 					<?php 
 					if(isset($_SESSION['user'])){
 						?>

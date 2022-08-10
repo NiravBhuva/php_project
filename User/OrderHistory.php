@@ -16,7 +16,7 @@ if($rows>=1){
 	<thead>
 	<th>Order_id</th>
 	<th>Username</th>
-	<th>Name</th>
+	<th>Billing Name</th>
 	<th>Quantity</th>
 	<th>Amount</th>
 	<th>Order Date</th>
