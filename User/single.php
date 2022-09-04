@@ -49,7 +49,6 @@ while($r=mysqli_fetch_array($c)){
 			"contact" => $_POST['contact'],
 			"contact_optional" => $_POST['contact_optional'],
 			"address" => $_POST['address'],
-			"quantity" => $_POST['quantity'],
 			"price" => $_POST['price'],
 			"amount" => $_POST['amount'],
 			"netamount" => $_POST['netamount'],
@@ -138,9 +137,6 @@ while($r=mysqli_fetch_array($c)){
 				
 							<div class="form-group"> <label for="exampleInputEmail1">Address</label>
 							<input type="text" name="address" class="form-control" id="exampleInputEmail1" placeholder="Address" required> </div>
-							
-							<div class="form-group"> <label for="exampleInputEmail1">Quantity</label>
-							<input type="number" name="quantity" class="form-control" id="exampleInputEmail1" placeholder="Quantity" required> </div>
 							
 							<?php
 							$id=$_REQUEST['id'];

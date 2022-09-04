@@ -6,26 +6,24 @@
 	if (isset($_POST['btnPlaceOrder'])){
 		$c = $_SESSION['cart'];
 		$c_new = array();
-		echo count($c);
-		$Quant = 0;
+		//echo count($c);
+		// $Quant = 0;
 		$NetAm = 0;
 		for ($i = 0; $i < count($c); $i++) {
 			$r = $c[$i];
 				if($r['user_id'] == $_SESSION['User_id']){
-					$Quant = $Quant + $r['quantity'];
-					$NetAm = $NetAm + ($r['price']*$r['quantity']);
+					$NetAm = $NetAm + $r['price'];
 				}
 		}
 
 		$Name=$_POST['name'];
-		$Quantity=$Quant;
-		$address=$_POST['addtxt'];
+		$contactNo=$_POST['contactNo'];
 		$NetAmount=$NetAm;
 		$username=$_SESSION['Name'];	
 		$dt=date("d-m-Y");
 		$userId = $_SESSION['User_id'];
 		
-		$qq = "INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Quantity`, `Oamount`, `Order_date`, `Daddress`) VALUES (NULL,'$username','$userId','$Name','$Quantity','$NetAmount','$dt','$address');";
+		$qq = "INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Oamount`, `Order_status`, `Order_date`, `Contact_no`) VALUES (NULL,'$username','$userId','$Name','$NetAmount','PENDING','$dt','$contactNo');";
 		
 		$qry=mysqli_query($con,$qq);
 		if($qry){
@@ -42,14 +40,14 @@
 					$email=$r['email'];
 					$company=$r['company'];
 					$address=$r['address'];
-					$Quantity=$r['quantity'];
+					// $Quantity=$r['quantity'];
 					$price=$r['price'];
-					$total=$Quantity * $price;
+					// $total=$Quantity * $price;
 					$q1 = "";
 					if($r['contact_optional'] != null){
-						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Quantity`, `Price`, `Total`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact','$sec_num','$Quantity','$price','$total','$address');";
+						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Price`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact','$sec_num','$price','$address');";
 					}else{
-						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Quantity`, `Price`, `Total`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact',NULL,'$Quantity','$price','$total','$address');";
+						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Price`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact',NULL,'$price','$address');";
 					}
 					mysqli_query($con,$q1);
 				}else{
@@ -111,9 +109,7 @@ if(in_array(true ,$flag )){
 							<th>Email</th>
 							<th>Company Name</th>
 							<th>Address</th>
-							<th>Quantity</th>		
 							<th>Price</th>
-							<th>Total</th>
 							<th>Remove</th>
 						</tr>
 					</thead>
@@ -142,7 +138,6 @@ for ($i = 0; $i < count($c); $i++) {
 	
 		?>	
 						<tr class="rem1">
-							<!-- <td class="invert"><?php echo $i+1;?></td> -->
 							<?php echo $rrr['image'];?> 
 							<td class="invert-image"><img src="../web/upload/<?php echo $rrr['Image'];?>" class="invert-image"/></td>
 							<td class="invert-image"><img src="../User/upload/<?php echo $r['image'];?>" class="invert-image"/></td>
@@ -151,11 +146,9 @@ for ($i = 0; $i < count($c); $i++) {
 							<td class="invert"><?php echo $r['email'];?></td>
 							<td class="invert"><?php echo $r['company'];?></td>
 							<td class="invert"><?php echo $r['address'];?></td>
-							<td class="invert"><?php echo $r['quantity'];?></td>
 							<td class="invert"><?php echo $r['price'];?></td>
-							<td class="invert"><?php echo $Total;?></td>
 							<?php $counter=$counter;?>
-							<?php $sum=$sum+$Total;?>
+							<?php $sum=$sum+$counter;?>
 							<td class="invert"><a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this record'); 
 							"href="checkoutdelete.php?cartId=<?php echo $i+1;?>&cardId=<?php echo $r['id']?>" onclick="return checkdelete()"><i style="font-size:20px; color:red" class="fa fa-trash-o" aria-hidden="true"></i></a>
 						
@@ -200,8 +193,9 @@ if(in_array(true ,$flag )){
 												</div>
 												
 												<div class="controls">
-													<label class="control-label">Address: </label>
-												 <input class="form-control" name="addtxt" type="text" placeholder="Address" required>
+													<label class="control-label">Contact No: </label>
+													<input class="form-control" type="text" name="contactNo" placeholder="Contact Number" pattern="[7-9]{1}[0-9]{9}" title="Phone number" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" required>
+												 	<!-- <input class="form-control" name="contactNo" type="text" placeholder="Address" required> -->
 												</div>
 													
 											</div>

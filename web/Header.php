@@ -147,9 +147,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </li>
 			  
 			   <li class="treeview">
-                <a href="ApproveUser.php">
+                <a href="Users.php">
                 <i class="fa fa-users"></i>
-                <span> Approved User</span>
+                <span>Users</span>
                 </a>
               </li>
 			  

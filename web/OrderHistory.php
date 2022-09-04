@@ -24,11 +24,12 @@ include "Header.php";
 								<tr>
 								  <th>Order Id</th>
 								  <th>User Name</th>
-								  <th>Name</th>
-								   <th>Quantity</th>
+								  <th>User ID</th>
+								  <th>Billing Name</th>
 								  <th>Amount</th>
 								  <th>Order Date</th>
-								  <th>Delivery Address</th>
+								  <th>Contact No</th>
+								  <th>Order Status</th>
 								 </tr>
 							</thead>
 <?php
@@ -39,23 +40,24 @@ include "Header.php";
 	{
 ?>
 
-							<tbody>
-								<tr>
-								  <td><?php echo $r['Order_id']; ?></td>
-								  <td>User</td>
-								  <!-- <td><?php echo $r['Username']; ?></td> -->
-								  <td><?php echo $r['Name']; ?></td>
-								  <td><?php echo $r['Quantity']; ?></td>
-								  <td><?php echo $r['Oamount']; ?></td>
-								  <td><?php echo $r['Order_date']; ?></td>
-								  <td><?php echo $r['Daddress']; ?></td>
-								 </tr>
+						<tbody>
+							<tr>
+								<td><?php echo $r['Order_id']; ?></td>
+								<td><?php echo $r['Username']; ?></td>
+								<td><?php echo $r['User_id']; ?></td>
+								<td><?php echo $r['Name']; ?></td>
+								<td><?php echo $r['Oamount']; ?></td>
+								<td><?php echo $r['Order_date']; ?></td>
+								<td><?php echo $r['Contact_no']; ?></td>
+								<td><?php echo $r['Order_status']; ?></td>
+								<td>
+									<a href="OrderStatusUpdate.php?id=<?php echo $r['Order_id'];?>">  <i style="font-size:20px; color:green" class="fa fa-pencil-square-o" aria-hidden="true"></i></a></a>
+								</td>
+							</tr>
 <?php
 	}						
-?>
-
-								
-								</tbody>
+?>	
+						</tbody>
 						</table>
 					</div>
 					

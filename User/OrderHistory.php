@@ -17,10 +17,10 @@ if($rows>=1){
 	<th>Order_id</th>
 	<th>Username</th>
 	<th>Billing Name</th>
-	<th>Quantity</th>
 	<th>Amount</th>
 	<th>Order Date</th>
-	<th>Delivery Address</th>
+	<th>Contact No</th>
+	<th>Order Status</th>
 	</thead>
 	<tbody>
 	<?php
@@ -31,10 +31,10 @@ if($rows>=1){
 			<td class="invert"><?php echo $r['Order_id']; ?></td>
 			<td class="invert"><?php echo $r['Username']; ?></td>
 			<td class="invert"><?php echo $r['Name']; ?></td>
-			<td class="invert"><?php echo $r['Quantity']; ?></td>
 			<td class="invert"><?php echo $r['Oamount']; ?></td>
 			<td class="invert"><?php echo $r['Order_date']; ?></td>
-			<td class="invert"><?php echo $r['Daddress']; ?></td>
+			<td class="invert"><?php echo $r['Contact_no']; ?></td>
+			<td class="invert"><?php echo $r['Order_status']; ?></td>
 			</tr>
 		<?php
 	}

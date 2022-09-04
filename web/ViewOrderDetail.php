@@ -32,9 +32,7 @@ include "Header.php";
 								  <th>Contact</th>
 								  <th>Additional Number</th>
 								  <th>Address</th>
-								  <th>Quantity</th>
 								  <th>Price</th>
-								  <th>Total</th> 
 								</tr>
 							</thead>
 <?php
@@ -55,9 +53,7 @@ include "Header.php";
 								  <td><?php echo $r['Contact']; ?></td>
 								  <td><?php echo $r['SecondaryNumber'] ?? "N/A";?></td>
 								  <td><?php echo $r['Address']; ?></td>
-								  <td><?php echo $r['Quantity']; ?></td>
 								  <td><?php echo $r['Price']; ?></td>
-								  <td><?php echo $r['Total']; ?></td>
 								</tr>
 <?php
 	}

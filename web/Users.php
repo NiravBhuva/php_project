@@ -16,9 +16,9 @@ include "Header.php";
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="tables">
-					<h3 class="title1">Approved Users</h3>
+					<h3 class="title1">Users</h3>
 					<div class="panel-body widget-shadow">
-						<h4>Approved Users Table:</h4>
+						<h4>Users Table:</h4>
 						<table class="table">
 							<thead>
 								<tr>
