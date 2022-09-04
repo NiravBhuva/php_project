@@ -15,9 +15,9 @@ include "Header.php";
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="tables">
-					<h3 class="title1">View Card Design Table</h3>
+					<h3 class="title1">Card Design</h3>
 					<div class="panel-body widget-shadow">
-						<h4>View Design Table:</h4>
+						<h4>View Card Design Table:</h4>
 
 
 <a href="CardDesignAddNew.php" 
@@ -25,12 +25,12 @@ style="float:right">Add New Card Design</a>
 						<table class="table">
 							<thead>
 								<tr>
-								<th>Card_id</th>
+								<th>Card Id</th>
 								<th>Category</th>
 								<th>Industry</th>								
-								<th>Card_name</th>
-								  <th>Card_Img</th>
-								   <th>Card_price</th>
+								<th>Card Name</th>
+								  <th>Card Image</th>
+								   <th>Card Price</th>
 								   
 								  
 								  </tr>
@@ -51,7 +51,7 @@ while($row=mysqli_fetch_array($c))
 		<td><?php echo $row['Industry'];?></td>
 		
 		<td><?php echo $row['Name'];?></td>
-		<td><img src="upload/<?php echo $row['Image'];?>" height=50 width=50/></td>
+		<td><img src="upload/<?php echo $row['Image'];?>" height=60 width=120/></td>
 		<td><?php echo $row['Price'];?></td>
 
 		

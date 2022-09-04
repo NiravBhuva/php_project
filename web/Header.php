@@ -156,14 +156,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			  			  
   
               <li class="treeview">
-                <a href="ViewOrder.php">
+                <a href="ViewOrderDetail.php">
                 <i class="fa fa-eye"></i>
                 <span>View Order Detail </span>
                 </a>
               </li>
 			  
 			   <li class="treeview">
-                <a href="ViewBill.php">
+                <a href="OrderHistory.php">
                 <i class="fa fa-clock-o"></i>
                 <span>Order History</span>
                 </a>
@@ -173,7 +173,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			 
 			  
 			  			  <li class="treeview">
-                <a href="aFeedback.php">
+                <a href="ContactUs.php">
                 <i class="fa fa-envelope"></i>
                 <span> Feedback</span>
                 </a>

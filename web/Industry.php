@@ -22,10 +22,10 @@ if(!isset($_SESSION['user']))
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="tables">
-					<h3 class="title1">Industry Table</h3>
+					<h3 class="title1">Industry Record</h3>
 					
 					<div class="panel-body widget-shadow">
-						<h4>Industry Record:</h4>
+						<h4>Industry Table:</h4>
 						
 <a href="IndustryAddNew.php" 
 style="float:right">Add New Industry</a>
@@ -36,8 +36,8 @@ style="float:right">Add New Industry</a>
 							<thead>
 								<tr>
 								  
-								  <th>Industry_id</th>
-								  <th>Industry_Name</th>
+								  <th>Industry Id</th>
+								  <th>Industry Name</th>
 									<th>Action</th>
 								  
 								</tr>

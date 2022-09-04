@@ -89,7 +89,7 @@ if(!isset($_SESSION['user']))
                     <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                     <div class="stats">
                       <h5><strong><?php echo $fc;?></strong></h5>
-                      <span>Feedback</span>
+                      <span>Contact Us</span>
                     </div>
                 </div>
         	 </div>

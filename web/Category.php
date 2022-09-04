@@ -37,12 +37,10 @@ style="float:right">Add New Category</a>
 <table class="table">
 							<thead>
 								<tr>
-								  
-								  <th>Cat_id</th>
-								  <th>Cat_Name</th>
-								  <th>Cat_Img</th>
+								  	<th>Cat Id</th>
+								  	<th>Cat Name</th>
+								  	<th>Cat Image</th>
 									<th>Action</th>
-								  
 								</tr>
 							</thead>
 <?php
@@ -57,7 +55,7 @@ while($r=mysqli_fetch_array($c))
 		<td><?php echo $r['Cat_id'];?></td>
 		<td><?php echo $r['Cat_name'];?></td>
 
-		<td><img src="upload/<?php echo $r['Cat_img'];?>" height=170 width=300/></td>
+		<td><img src="upload/<?php echo $r['Cat_img'];?>" height=160 width=300/></td>
 		
 
 		<td>
