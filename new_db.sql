@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 06, 2022 at 01:24 PM
+-- Generation Time: Sep 04, 2022 at 11:25 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.19
 
@@ -24,11 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_info`
+--
+
+CREATE TABLE `admin_info` (
+  `id` int(5) NOT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_info`
+--
+
+INSERT INTO `admin_info` (`id`, `Username`, `Password`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `card_info`
 --
 
 CREATE TABLE `card_info` (
-  `Card_id` int(5) NOT NULL DEFAULT 0,
+  `Card_id` int(5) NOT NULL,
   `Category` text NOT NULL,
   `Industry` text NOT NULL,
   `Name` text NOT NULL,
@@ -50,7 +69,7 @@ INSERT INTO `card_info` (`Card_id`, `Category`, `Industry`, `Name`, `Image`, `Pr
 (8, '1', '2', 'Medical', 'medical.png', 100),
 (9, '2', '2', 'Education', 'education.png', 100),
 (10, '6', '4', 'Restaurant', 'restaurant.png', 200),
-(13, '6', '1', 'Corporate', 'corporate.png', 299);
+(13, '1', '1', 'Corporate', 'corporate.png', 300);
 
 -- --------------------------------------------------------
 
@@ -59,7 +78,7 @@ INSERT INTO `card_info` (`Card_id`, `Category`, `Industry`, `Name`, `Image`, `Pr
 --
 
 CREATE TABLE `cat_info` (
-  `Cat_id` int(5) NOT NULL DEFAULT 0,
+  `Cat_id` int(5) NOT NULL,
   `Cat_name` varchar(100) NOT NULL,
   `Cat_img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,7 +117,7 @@ CREATE TABLE `contact_us` (
 
 INSERT INTO `contact_us` (`Contact_id`, `Username`, `Contact`, `Email`, `Subject`, `Contact_Date`, `Message`) VALUES
 (3, 'Nirav', 7990322058, 'nirav@gmail.com', 'Order', '26-06-2022', 'I want to order visiting card'),
-(7, 'h', 9999999999, 'h@a.a', 'h', '29-07-2022', 'h');
+(4, 'asdf', 234, 'asdfs', 'df', 'sdf', 'sdf');
 
 -- --------------------------------------------------------
 
@@ -107,7 +126,7 @@ INSERT INTO `contact_us` (`Contact_id`, `Username`, `Contact`, `Email`, `Subject
 --
 
 CREATE TABLE `industry_info` (
-  `Industry_id` int(5) NOT NULL DEFAULT 0,
+  `Industry_id` int(5) NOT NULL,
   `Industry_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -121,6 +140,64 @@ INSERT INTO `industry_info` (`Industry_id`, `Industry_name`) VALUES
 (3, 'Travel & Tourism'),
 (4, 'Restaurant'),
 (5, 'Information Technology');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_item_detail`
+--
+
+CREATE TABLE `order_item_detail` (
+  `id` int(5) NOT NULL,
+  `Card_id` int(5) NOT NULL,
+  `Order_id` int(5) NOT NULL,
+  `Name` text NOT NULL,
+  `Company` text NOT NULL,
+  `Logo` text NOT NULL,
+  `Email` text NOT NULL,
+  `Contact` bigint(10) NOT NULL,
+  `SecondaryNumber` varchar(11) DEFAULT NULL,
+  `Price` int(10) NOT NULL,
+  `Address` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_item_detail`
+--
+
+INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Price`, `Address`) VALUES
+(60, 3, 72, 'jaydeep hirapara', 'hirapara', 'slider.jp2', 'jaydeep@gmail.com', 7878676543, NULL, 300, 'hirapara nagar 4'),
+(61, 13, 73, 'avc', 'sdsd', 'slider.jp2', 'a@gmail.com', 7865432198, NULL, 300, 'ddc'),
+(64, 3, 75, 'adf', 'asd', 'slider1.aspx.jpeg', 'nirav@gmail.com', 8990789078, NULL, 300, 'sd'),
+(65, 10, 75, 'Niravvv', 'hirapara', 'slider1.aspx.jpeg', 'a@gmail.com', 7878676543, '8990789078', 200, 'sdf'),
+(66, 10, 76, 'Niravvv', 'asd', 'slider1.aspx.jpeg', 'a@gmail.com', 7878676543, NULL, 200, 'df');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_master`
+--
+
+CREATE TABLE `order_master` (
+  `Order_id` int(5) NOT NULL,
+  `Username` varchar(150) NOT NULL,
+  `User_id` int(11) NOT NULL,
+  `Name` varchar(150) NOT NULL,
+  `Oamount` bigint(10) NOT NULL,
+  `Order_status` varchar(50) NOT NULL,
+  `Order_date` text NOT NULL,
+  `Contact_no` bigint(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_master`
+--
+
+INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Oamount`, `Order_status`, `Order_date`, `Contact_no`) VALUES
+(72, 'jaydeep', 7, 'jaydeeep hirapara', 300, 'PENDING', '29-08-2022', 8989898989),
+(73, 'jaydeep', 7, 'avc', 600, 'PENDING', '29-08-2022', 8989898989),
+(75, 'jaydeep', 7, 'Niravvv', 500, 'DELIVERED', '04-09-2022', 8989899090),
+(76, 'jaydeep', 7, 'adf', 200, 'PENDING', '04-09-2022', 8989899090);
 
 -- --------------------------------------------------------
 
@@ -154,6 +231,12 @@ INSERT INTO `user_info` (`User_id`, `Name`, `Username`, `Password`, `Contact`, `
 --
 
 --
+-- Indexes for table `admin_info`
+--
+ALTER TABLE `admin_info`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `card_info`
 --
 ALTER TABLE `card_info`
@@ -178,6 +261,19 @@ ALTER TABLE `industry_info`
   ADD UNIQUE KEY `Industry_id` (`Industry_id`);
 
 --
+-- Indexes for table `order_item_detail`
+--
+ALTER TABLE `order_item_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `order_master`
+--
+ALTER TABLE `order_master`
+  ADD UNIQUE KEY `Order_id` (`Order_id`);
+
+--
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
@@ -188,10 +284,46 @@ ALTER TABLE `user_info`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_info`
+--
+ALTER TABLE `admin_info`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `card_info`
+--
+ALTER TABLE `card_info`
+  MODIFY `Card_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `cat_info`
+--
+ALTER TABLE `cat_info`
+  MODIFY `Cat_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
   MODIFY `Contact_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `industry_info`
+--
+ALTER TABLE `industry_info`
+  MODIFY `Industry_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `order_item_detail`
+--
+ALTER TABLE `order_item_detail`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT for table `order_master`
+--
+ALTER TABLE `order_master`
+  MODIFY `Order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `user_info`
