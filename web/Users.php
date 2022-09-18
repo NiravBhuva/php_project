@@ -24,7 +24,6 @@ include "Header.php";
 								<tr>
 								  <th>User Id</th>
 								  <th>Name</th>
-								  <th>User name</th>
 								  <th>Password</th>
 								  <th>Contact</th>
 								  <th>Email</th>
@@ -45,7 +44,6 @@ include "Header.php";
 	<tr>
 	<th scope="row"><?php echo $r['User_id']; ?></th>
 	<td><?php echo $r['Name']; ?></td>
-	<td><?php echo $r['Username']; ?></td>
 	<td><?php echo $r['Password']; ?></td>
 	<td><?php echo $r['Contact']; ?></td>
 	<td><?php echo $r['Email']; ?></td>

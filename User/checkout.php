@@ -4,71 +4,11 @@
 	include "Header.php";
 	include "Connection.php";
 	if (isset($_POST['btnPlaceOrder'])){
-		$c = $_SESSION['cart'];
-		$c_new = array();
-		//echo count($c);
-		// $Quant = 0;
-		$NetAm = 0;
-		for ($i = 0; $i < count($c); $i++) {
-			$r = $c[$i];
-				if($r['user_id'] == $_SESSION['User_id']){
-					$NetAm = $NetAm + $r['price'];
-				}
-		}
-
-		$Name=$_POST['name'];
-		$contactNo=$_POST['contactNo'];
-		$NetAmount=$NetAm;
-		$username=$_SESSION['Name'];	
-		$dt=date("d-m-Y");
-		$userId = $_SESSION['User_id'];
-		
-		$qq = "INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Oamount`, `Order_status`, `Order_date`, `Contact_no`) VALUES (NULL,'$username','$userId','$Name','$NetAmount','PENDING','$dt','$contactNo');";
-		
-		$qry=mysqli_query($con,$qq);
-		if($qry){
-			$order_master_id = $con->insert_id;
-			
-			for ($i = 0; $i < count($c); $i++) {
-				$r = $c[$i];
-				if($r['user_id'] == $_SESSION['User_id']){
-					$card_id=$r['id'];
-					$logo=$r['image'];
-					$name=$r['name']; 
-					$contact=$r['contact'];
-					$sec_num=$r['contact_optional'];
-					$email=$r['email'];
-					$company=$r['company'];
-					$address=$r['address'];
-					// $Quantity=$r['quantity'];
-					$price=$r['price'];
-					// $total=$Quantity * $price;
-					$q1 = "";
-					if($r['contact_optional'] != null){
-						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Price`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact','$sec_num','$price','$address');";
-					}else{
-						$q1 = "INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Price`, `Address`) VALUES (NULL, '$card_id','$order_master_id','$name','$company','$logo','$email','$contact',NULL,'$price','$address');";
-					}
-					mysqli_query($con,$q1);
-				}else{
-					$c_new[] = $r;
-				}
-			}
-			$_SESSION['cart'] = $c_new;
 		?>
-		<script>1		
-			alert('Your order had been placed successfully');
-			window.location="index.php";
+		<script>
+			window.location="Payment.php?num=<?php echo $_POST['contactNo'];?>&uName=<?php echo $_POST['name']?>";
 		</script>
 		<?php
-			
-		}else{
-		?>
-			<script>
-				alert('Something Went Wrong');
-			</script>
-		<?php
-		}
 	}
 ?>		
 <!-- about -->
@@ -195,26 +135,19 @@ if(in_array(true ,$flag )){
 												<div class="controls">
 													<label class="control-label">Contact No: </label>
 													<input class="form-control" type="text" name="contactNo" placeholder="Contact Number" pattern="[7-9]{1}[0-9]{9}" title="Phone number" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" required>
-												 	<!-- <input class="form-control" name="contactNo" type="text" placeholder="Address" required> -->
 												</div>
-													
 											</div>
 											<button class="submit check_out" name="btnPlaceOrder">Place Order</button>
+
+											
+										</div>
 										</div>
 									</section>
 								</form>
 					</div>
-					
-
-			
 				<div class="clearfix"> </div>
-				
 			</div>
-
 		</div>
-
-
-
 <?php
 	
 }
@@ -226,8 +159,6 @@ if(in_array(true ,$flag )){
 	</div>
 <!-- //banner -->
 <?php
-
-
 
 include "Footer.php";
 ?>

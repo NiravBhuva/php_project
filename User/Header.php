@@ -59,12 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="w3l_search"></div>
 
-		<!-- <div class="w3l_search">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
-				<input type="submit" value=" ">
-			</form>
-		</div> -->
+		
 
 		<?php 
 		if(isset($_SESSION['user'])){
@@ -86,6 +81,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="w3l_header_right1">
 			<h2><a href="logout.php">Logout</a></h2>
+			</div>
+
+			<div class="w3l_header_right2">
+			<h2><a><?php echo $_SESSION['Name'];?></a></h2>
 			</div>
 		<?php
 		}else{

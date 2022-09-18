@@ -84,6 +84,26 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
 .w3l_offers{
 	float:left;
 }
+.modal{
+	/* height: 50%;
+    width: 50%;
+    background: white;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px; */
+
+	background: white;
+	position:absolute;
+    height: 400px;
+    width: 700px;
+    left:50%;
+    top:50%;
+    margin-top: -200px;
+    margin-left: -350px;
+}
 .w3l_offers a{
 	font-size: 1.2em;
     color: #fff;
@@ -128,6 +148,9 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
 .w3l_header_right1{
 	float:right;
 }
+.w3l_header_right2{
+	float:right;
+}
 .w3l_header_right1 h2 a{
 	font-size: .74em;
     color: #fff;
@@ -135,6 +158,15 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     background: #FA1818;
     display: block;
 	text-decoration:none;
+}
+.w3l_header_right2 h2 a{
+	font-size: .74em;
+    color: #fff;
+    padding: .5em 1.5em;
+    background: #212121;
+    display: block;
+	text-decoration:none;
+	text-transform: capitalize;
 }
 ul.dropdown-menu.drp-mnu {
     right: 0;
@@ -2391,6 +2423,17 @@ ul.wmuSliderPagination {
     text-transform: uppercase;
     margin-left: 1.1em;
 }
+.place-order input[type="submit"]{
+	outline: none;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #fff;
+    background: #84C639;
+    width: 46.6%;
+    border: none;
+    text-transform: uppercase;
+    margin-left: 1.1em;
+}
 .agileinfo_mail_grid_right input[type="submit"]:hover,.agileinfo_mail_grid_right input[type="reset"]:hover{
 	background:#212121;
 }
@@ -3565,6 +3608,11 @@ input.checkbox:checked:after {
 		font-size: .6em;
 		padding:.75em 1em;
 	}
+	.w3l_header_right2 h2 a {
+		font-size: .6em;
+		padding:.75em 1em;
+		text-transform: capitalize;
+	}
 	.w3ls_logo_products_left h1 a {
 		font-size: 1em;
 		background: url(../images/img-sp.png) no-repeat 28px -17px;
@@ -4040,6 +4088,10 @@ input.checkbox:checked:after {
 	}
 	.w3l_header_right1 h2 a {
 		font-size: 14px;
+	}
+	.w3l_header_right2 h2 a {
+		font-size: 14px;
+		text-transform: capitalize;
 	}
 	.profile_details_drop a {
 		padding-top: .5em;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2022 at 11:25 AM
+-- Generation Time: Sep 18, 2022 at 10:15 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.19
 
@@ -48,8 +48,8 @@ INSERT INTO `admin_info` (`id`, `Username`, `Password`) VALUES
 
 CREATE TABLE `card_info` (
   `Card_id` int(5) NOT NULL,
-  `Category` text NOT NULL,
-  `Industry` text NOT NULL,
+  `Category` int(5) NOT NULL,
+  `Industry` int(5) NOT NULL,
   `Name` text NOT NULL,
   `Image` text NOT NULL,
   `Price` int(5) NOT NULL
@@ -60,16 +60,16 @@ CREATE TABLE `card_info` (
 --
 
 INSERT INTO `card_info` (`Card_id`, `Category`, `Industry`, `Name`, `Image`, `Price`) VALUES
-(2, '5', '4', 'Automobiles', 'automobiles.png', 1302),
-(3, '1', '5', 'I.T.', 'it9.jpg', 300),
-(4, '2', '3', 'Photography', 'photography.png', 320),
-(5, '4', '1', 'Folded', 'folded.png', 300),
-(6, '2', '1', 'Office', 'slider2.jpg', 200),
-(7, '3', '2', 'Finance', 'slider5.jpg', 300),
-(8, '1', '2', 'Medical', 'medical.png', 100),
-(9, '2', '2', 'Education', 'education.png', 100),
-(10, '6', '4', 'Restaurant', 'restaurant.png', 200),
-(13, '1', '1', 'Corporate', 'corporate.png', 300);
+(2, 1, 3, 'Automobiles', 'automobiles.png', 1302),
+(3, 2, 5, 'I.T.', 'it9.jpg', 300),
+(4, 3, 1, 'Photography', 'photography.png', 320),
+(5, 1, 2, 'Folded', 'folded.png', 300),
+(6, 4, 1, 'Office', 'slider2.jpg', 200),
+(7, 5, 2, 'Finance', 'slider5.jpg', 300),
+(8, 6, 1, 'Medical', 'medical.png', 100),
+(9, 3, 2, 'Education', 'education.png', 100),
+(10, 2, 4, 'Restaurant', 'restaurant.png', 200),
+(13, 6, 1, 'Corporate', 'corporate.png', 300);
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,8 @@ CREATE TABLE `contact_us` (
 
 INSERT INTO `contact_us` (`Contact_id`, `Username`, `Contact`, `Email`, `Subject`, `Contact_Date`, `Message`) VALUES
 (3, 'Nirav', 7990322058, 'nirav@gmail.com', 'Order', '26-06-2022', 'I want to order visiting card'),
-(4, 'asdf', 234, 'asdfs', 'df', 'sdf', 'sdf');
+(4, 'asdf', 234, 'asdfs', 'df', '26-06-2022', 'sdf'),
+(8, 'sdf', 8990789078, 'nirav@gmail.com', 'sf', '04-09-2022', 'sdf');
 
 -- --------------------------------------------------------
 
@@ -136,7 +137,7 @@ CREATE TABLE `industry_info` (
 
 INSERT INTO `industry_info` (`Industry_id`, `Industry_name`) VALUES
 (1, 'Office/Company'),
-(2, 'Beauty Salon'),
+(2, 'Education'),
 (3, 'Travel & Tourism'),
 (4, 'Restaurant'),
 (5, 'Information Technology');
@@ -168,9 +169,9 @@ CREATE TABLE `order_item_detail` (
 INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`, `Logo`, `Email`, `Contact`, `SecondaryNumber`, `Price`, `Address`) VALUES
 (60, 3, 72, 'jaydeep hirapara', 'hirapara', 'slider.jp2', 'jaydeep@gmail.com', 7878676543, NULL, 300, 'hirapara nagar 4'),
 (61, 13, 73, 'avc', 'sdsd', 'slider.jp2', 'a@gmail.com', 7865432198, NULL, 300, 'ddc'),
-(64, 3, 75, 'adf', 'asd', 'slider1.aspx.jpeg', 'nirav@gmail.com', 8990789078, NULL, 300, 'sd'),
-(65, 10, 75, 'Niravvv', 'hirapara', 'slider1.aspx.jpeg', 'a@gmail.com', 7878676543, '8990789078', 200, 'sdf'),
-(66, 10, 76, 'Niravvv', 'asd', 'slider1.aspx.jpeg', 'a@gmail.com', 7878676543, NULL, 200, 'df');
+(67, 2, 77, 'jaydeep', 'abcd', 'slider.jp2', 'abcd@gmail.com', 7896765665, NULL, 1302, 'jasdan'),
+(80, 2, 93, 'fgh', 'dh', 'slider1.aspx.jpeg', 'ghj@dgh.dfg', 7897897899, NULL, 1302, 'cb'),
+(81, 2, 94, 'dfgh', 'dgh', 'slider1.aspx.jpeg', 'zdfv@sfg.df', 7897897899, NULL, 1302, 'xdf');
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,6 @@ INSERT INTO `order_item_detail` (`id`, `Card_id`, `Order_id`, `Name`, `Company`,
 
 CREATE TABLE `order_master` (
   `Order_id` int(5) NOT NULL,
-  `Username` varchar(150) NOT NULL,
   `User_id` int(11) NOT NULL,
   `Name` varchar(150) NOT NULL,
   `Oamount` bigint(10) NOT NULL,
@@ -193,11 +193,12 @@ CREATE TABLE `order_master` (
 -- Dumping data for table `order_master`
 --
 
-INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Oamount`, `Order_status`, `Order_date`, `Contact_no`) VALUES
-(72, 'jaydeep', 7, 'jaydeeep hirapara', 300, 'PENDING', '29-08-2022', 8989898989),
-(73, 'jaydeep', 7, 'avc', 600, 'PENDING', '29-08-2022', 8989898989),
-(75, 'jaydeep', 7, 'Niravvv', 500, 'DELIVERED', '04-09-2022', 8989899090),
-(76, 'jaydeep', 7, 'adf', 200, 'PENDING', '04-09-2022', 8989899090);
+INSERT INTO `order_master` (`Order_id`, `User_id`, `Name`, `Oamount`, `Order_status`, `Order_date`, `Contact_no`) VALUES
+(72, 7, 'jaydeeep hirapara', 300, 'PENDING', '29-08-2022', 8989898989),
+(73, 7, 'avc', 600, 'PENDING', '29-08-2022', 8989898989),
+(77, 7, 'jaydeeep hirapara', 1302, 'DELIVERED', '07-09-2022', 8989899090),
+(93, 1, 'fgh', 1302, 'PENDING', '18-09-2022', 7897897899),
+(94, 1, 'Niiirrr', 1302, 'PENDING', '18-09-2022', 8908908900);
 
 -- --------------------------------------------------------
 
@@ -208,7 +209,6 @@ INSERT INTO `order_master` (`Order_id`, `Username`, `User_id`, `Name`, `Oamount`
 CREATE TABLE `user_info` (
   `User_id` int(5) NOT NULL,
   `Name` varchar(150) NOT NULL,
-  `Username` varchar(150) NOT NULL,
   `Password` varchar(150) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `Contact` bigint(10) NOT NULL,
   `Email` varchar(50) NOT NULL,
@@ -222,9 +222,9 @@ CREATE TABLE `user_info` (
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`User_id`, `Name`, `Username`, `Password`, `Contact`, `Email`, `Gender`, `DOB`, `Address`, `City`) VALUES
-(1, 'Nirav', 'nirav', '123qwe', 1234567890, 'nirav@gmail.com', 'male', '05-04-1999', 'Jasdan, Gujarat', 'Rajkot'),
-(7, 'jaydeep', 'Jaydeep', '123', 8769876754, 'jaydeep@gmail.com', 'male', 'DD-MMM-YYYY', 'jasdan', 'jasdan');
+INSERT INTO `user_info` (`User_id`, `Name`, `Password`, `Contact`, `Email`, `Gender`, `DOB`, `Address`, `City`) VALUES
+(1, 'Nirav', '123qwe', 1234567890, 'nirav@gmail.com', 'male', '05-04-1999', 'Jasdan, Gujarat', 'Rajkot'),
+(7, 'jaydeep', '123', 8769876754, 'jaydeep@gmail.com', 'male', 'DD-MMM-YYYY', 'jasdan', 'jasdan');
 
 --
 -- Indexes for dumped tables
@@ -240,7 +240,9 @@ ALTER TABLE `admin_info`
 -- Indexes for table `card_info`
 --
 ALTER TABLE `card_info`
-  ADD UNIQUE KEY `Card_id` (`Card_id`);
+  ADD UNIQUE KEY `Card_id` (`Card_id`),
+  ADD KEY `Industry` (`Industry`),
+  ADD KEY `Category` (`Category`);
 
 --
 -- Indexes for table `cat_info`
@@ -265,19 +267,23 @@ ALTER TABLE `industry_info`
 --
 ALTER TABLE `order_item_detail`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `Card_id` (`Card_id`),
+  ADD KEY `order_item_detail_ibfk_1` (`Order_id`);
 
 --
 -- Indexes for table `order_master`
 --
 ALTER TABLE `order_master`
-  ADD UNIQUE KEY `Order_id` (`Order_id`);
+  ADD UNIQUE KEY `Order_id` (`Order_id`),
+  ADD KEY `User_id` (`User_id`);
 
 --
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`User_id`);
+  ADD PRIMARY KEY (`User_id`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -305,7 +311,7 @@ ALTER TABLE `cat_info`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `Contact_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Contact_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `industry_info`
@@ -317,19 +323,43 @@ ALTER TABLE `industry_info`
 -- AUTO_INCREMENT for table `order_item_detail`
 --
 ALTER TABLE `order_item_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `Order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `Order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
   MODIFY `User_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `card_info`
+--
+ALTER TABLE `card_info`
+  ADD CONSTRAINT `card_info_ibfk_1` FOREIGN KEY (`Industry`) REFERENCES `industry_info` (`Industry_id`),
+  ADD CONSTRAINT `card_info_ibfk_2` FOREIGN KEY (`Category`) REFERENCES `cat_info` (`Cat_id`);
+
+--
+-- Constraints for table `order_item_detail`
+--
+ALTER TABLE `order_item_detail`
+  ADD CONSTRAINT `order_item_detail_ibfk_1` FOREIGN KEY (`Order_id`) REFERENCES `order_master` (`Order_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_item_detail_ibfk_2` FOREIGN KEY (`Card_id`) REFERENCES `card_info` (`Card_id`);
+
+--
+-- Constraints for table `order_master`
+--
+ALTER TABLE `order_master`
+  ADD CONSTRAINT `order_master_ibfk_1` FOREIGN KEY (`User_id`) REFERENCES `user_info` (`User_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

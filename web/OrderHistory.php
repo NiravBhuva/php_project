@@ -23,8 +23,7 @@ include "Header.php";
 							<thead>
 								<tr>
 								  <th>Order Id</th>
-								  <th>User Name</th>
-								  <th>User ID</th>
+								  <th>User</th>
 								  <th>Billing Name</th>
 								  <th>Amount</th>
 								  <th>Order Date</th>
@@ -43,9 +42,15 @@ include "Header.php";
 						<tbody>
 							<tr>
 								<td><?php echo $r['Order_id']; ?></td>
-								<td><?php echo $r['Username']; ?></td>
-								<td><?php echo $r['User_id']; ?></td>
-								<td><?php echo $r['Name']; ?></td>
+								<?php 
+									$user = $r['User_id'];
+									$query="SELECT * FROM user_info where User_id='$user'";
+									$cc=mysqli_query($con,$query);
+									$rr=mysqli_fetch_array($cc);
+									$user = $rr['Name'];
+								?>
+								<td><?php echo ucwords($user); ?></td>
+								<td><?php echo ucwords($r['Name']); ?></td>
 								<td><?php echo $r['Oamount']; ?></td>
 								<td><?php echo $r['Order_date']; ?></td>
 								<td><?php echo $r['Contact_no']; ?></td>

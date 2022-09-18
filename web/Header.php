@@ -168,28 +168,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <span>Order History</span>
                 </a>
               </li>
-			  
-			  
-			 
-			  
 			  			  <li class="treeview">
                 <a href="ContactUs.php">
                 <i class="fa fa-envelope"></i>
                 <span> Feedback</span>
                 </a>
               </li>
-			  
-			  			  <li class="treeview">
+              
+              <?php 
+		          if(isset($_SESSION['user'])){
+		          ?>
+                <li class="treeview">
                 <a href="logout.php?logout">
                 <i class="fa fa-sign-out"></i>
                 <span> Logout</span>
                 </a>
-              </li>
-              
-             
-			 
-               
-              
+                </li>
+		          <?php
+		          }
+		          ?>
             </ul>
           </div>
           <!-- /.navbar-collapse -->

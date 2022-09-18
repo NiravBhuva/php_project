@@ -46,9 +46,20 @@ while($row=mysqli_fetch_array($c))
 	<tbody>
 	<tr>
 		<td><?php echo $row['Card_id'];?></td>
-		
-		<td><?php echo $row['Category'];?></td>
-		<td><?php echo $row['Industry'];?></td>
+		<?php 
+			$cat = $row['Category'];
+			$industry = $row['Industry'];
+			$query="SELECT * FROM cat_info where Cat_id='$cat'";
+			$cc=mysqli_query($con,$query);
+			$rr=mysqli_fetch_array($cc);
+			$cat = $rr['Cat_name'];
+			$query="SELECT * FROM industry_info where Industry_id='$industry'";
+			$cc=mysqli_query($con,$query);
+			$rr=mysqli_fetch_array($cc);
+			$industry = $rr['Industry_name'];
+		?>
+		<td><?php echo $cat;?></td>
+		<td><?php echo $industry;?></td>
 		
 		<td><?php echo $row['Name'];?></td>
 		<td><img src="upload/<?php echo $row['Image'];?>" height=60 width=120/></td>

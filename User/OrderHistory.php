@@ -15,12 +15,12 @@ if($rows>=1){
 	<table class="timetable_sub">
 	<thead>
 	<th>Order_id</th>
-	<th>Username</th>
 	<th>Billing Name</th>
 	<th>Amount</th>
 	<th>Order Date</th>
 	<th>Contact No</th>
 	<th>Order Status</th>
+	<th>Cancel Order</th>
 	</thead>
 	<tbody>
 	<?php
@@ -29,12 +29,22 @@ if($rows>=1){
 		?>
 			<tr class="rem1">
 			<td class="invert"><?php echo $r['Order_id']; ?></td>
-			<td class="invert"><?php echo $r['Username']; ?></td>
 			<td class="invert"><?php echo $r['Name']; ?></td>
 			<td class="invert"><?php echo $r['Oamount']; ?></td>
 			<td class="invert"><?php echo $r['Order_date']; ?></td>
 			<td class="invert"><?php echo $r['Contact_no']; ?></td>
 			<td class="invert"><?php echo $r['Order_status']; ?></td>
+			<?php 
+				if($r['Order_status'] != "DELIVERED"){
+					?>
+						<td>
+							<a class="dropdown-item" onclick="return confirm('Are you sure you want to cancel this order'); 
+							"href="CancelOrder.php?id=<?php echo $r['Order_id'];?>" onclick="return checkdelete()"><i style="font-size:20px; color:red" class="fa fa-trash-o" aria-hidden="true"></i></a>
+						</td>
+					<?php
+				}
+			?>
+			
 			</tr>
 		<?php
 	}

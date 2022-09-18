@@ -8,7 +8,6 @@
 	if(isset($_POST['submit']))
 	{
 		$Name=$_POST['name'];
-		$Username=$_POST['username'];
 		$Password=$_POST['password'];
 		$Contact=$_POST['contact'];
 		$Email=$_POST['email'];
@@ -28,7 +27,7 @@
 		if($r>=1){
 			echo "<script>alert('User already exists')</script>";
 		}else{
-			$q="INSERT INTO `user_info` (`User_id`, `Name`, `Username`, `Password`, `Contact`, `Email`, `Gender`, `DOB`, `Address`, `City`) VALUES (NULL,'$Name','$Username','$Password','$Contact','$Email','$Gender','$DOB','$Address','$City')";
+			$q="INSERT INTO `user_info` (`User_id`, `Name`, `Password`, `Contact`, `Email`, `Gender`, `DOB`, `Address`, `City`) VALUES (NULL,'$Name','$Password','$Contact','$Email','$Gender','$DOB','$Address','$City')";
 			$c=mysqli_query($con,$q);
 			if($c){ 
 	 			echo "<script> window.location ='login.php';</script>"; 
@@ -52,20 +51,15 @@
 				  <div class="form">
 					<h2>Create an account</h2>
 					<form action="#" method="post">
-					<para>Name:-</para>
-					  <input type="text" name="name" placeholder="Name" required>
-					  <para>Username:-</para>
-					  <input type="text" name="username" placeholder="Username" required>
-					  <para>Password:-</para>
-					  <input type="password" name="password" placeholder="Password" required>
-
-					  <para>Contact:-</para>
-					  <input type="text" name="contact" placeholder="Phone Number" pattern="[7-9]{1}[0-9]{9}" title="Phone number" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" required>
-					  <!-- <input type="text" name="contact" placeholder="Phone Number" pattern="[7-9]{1}[0-9]{9}" title="Phone number" required> -->
-					  <!-- <input type="text" name="contact" placeholder="Phone Number" minlength="9" maxlength="10" pattern="[7-9]{1}[0-9]{9}" oninvalid="setCustomValidity('Please enter valid number!')" required> -->
-					  <para>Email:-</para>
-					  <input type="email" name="email" placeholder="Email Address" required>
-					  <para>Gender:-</para>
+						<para>Name:-</para>
+					  	<input type="text" name="name" placeholder="Name" required>
+						<para>Email:-</para>
+					  	<input type="email" name="email" placeholder="Email Address" required>
+					  	<para>Password:-</para>
+					  	<input type="password" name="password" placeholder="Password" required>
+					  	<para>Contact:-</para>
+					  	<input type="text" name="contact" placeholder="Phone Number" pattern="[7-9]{1}[0-9]{9}" title="Phone number" oninvalid="this.setCustomValidity('Please enter valid number!')" oninput="this.setCustomValidity('')" required>
+					  	<para>Gender:-</para>
 						<input type="radio" name="gender"  value="male" required/>Male
 						<input type="radio" name="gender" value="female" required/>Female	
 						<td id="gen" class="id"><br><br>
